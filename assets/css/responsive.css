@@ -1,0 +1,117 @@
+@media only screen and (max-width: 1100px) {}
+
+@media only screen and (max-width: 1100px) {
+    .container.welcome {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section {
+        padding-bottom: 0
+    }
+
+    .wlcm-img-1 {
+        width: 30%;
+    }
+
+    .wlcm-img-2 {
+        margin-top: 8rem;
+    }
+
+    .welcome-section p {
+        display: none;
+    }
+
+    img.wlcm-subtract {
+        display: none;
+    }
+
+    .welcome-section,
+    .sign-in-section {
+        height: auto;
+        background: linear-gradient(to right, #0798F1, #A55BEC);
+    }
+
+    .sign-in-section {
+        min-height: 90rem;
+        padding-top: 1rem;
+    }
+
+    .sign-in-logo {
+        display: none;
+    }
+
+    .sign-in-section h2 {
+        margin-top: 0;
+        color: #fff;
+        opacity: 0.7;
+        margin-bottom: 5rem;
+    }
+
+
+
+
+
+
+
+
+    .sign-in-section form {
+        max-width: 80%;
+        background: rgba(255, 255, 255, 0.3);
+        padding: 2rem;
+        margin-top: 0;
+        border-radius: 2rem;
+    }
+
+    .sign-in-section input {
+        background: rgba(200, 200, 200, 0.3);
+    }
+
+
+
+    .sign-in-section input[type="submit"] {
+        margin: 0 auto;
+        margin-top: 6rem;
+        width: 100%;
+        max-width: 30rem;
+        margin-bottom: 4rem;
+    }
+
+    img.sign-in-subtract {
+        display: block;
+    }
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    .sign-in-section {
+        min-height: 85rem;
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+    .wlcm-img-1 {
+        width: 40%;
+    }
+
+    .sign-in-section {
+        min-height: 75rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .sign-in-section {
+        padding: 0;
+    }
+
+    .sign-in-section form {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    html {
+        font-size: 8px;
+    }
+}
