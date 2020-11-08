@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+/* ALL_CONVERSATION PAGE  STYLE START  */
 body{
     margin:0;
     padding:0;
@@ -137,6 +138,7 @@ header .container .group_list .groups .group .group_description .group_details .
 header .container .group_list .groups .group .last_msg_time{
 
 }
+/* ALL CONVERSATION PAGE END  */
 =======
 *,
 *::before,
