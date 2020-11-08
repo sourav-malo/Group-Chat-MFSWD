@@ -50,6 +50,7 @@ header nav .nav_item .profile_section .profile img{
 header nav .nav_item .profile_section .profile span{
   margin-left:10px;
   margin-top: 15px;
+  color: white;
 }
 header nav .nav_item .profile_section .logOutbtn{
  /* background-color: red; */
