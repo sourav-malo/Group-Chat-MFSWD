@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
     margin:0;
     padding:0;
@@ -135,3 +136,171 @@ header .container .group_list .groups .group .group_description .group_details .
 header .container .group_list .groups .group .last_msg_time{
 
 }
+=======
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: Roboto, Calibri, sans-serif;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 120rem;
+    padding: 5rem;
+    margin: 0 auto;
+}
+
+
+/* Welcome Section */
+
+.container.welcome {
+    max-width: 100%;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.welcome-section,
+.sign-in-section {
+    padding: 5rem;
+    height: 100vh;
+    position: relative;
+}
+
+.welcome-section {
+    text-align: center;
+    background: linear-gradient(to right, #0798F1, #A55BEC);
+}
+
+.wlcm-img-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+}
+
+.wlcm-img-2 {
+    width: 8rem;
+    margin-top: 5rem;
+}
+
+.welcome-section h1 {
+    font-size: 6rem;
+    color: #eee;
+    font-weight: 500;
+    margin: 2rem 0;
+}
+
+.welcome-section p {
+    font-size: 2rem;
+    color: #fff;
+    opacity: 0.5;
+}
+
+img.wlcm-subtract {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: 100%;
+}
+
+
+
+
+
+.sign-in-section {
+    text-align: center;
+
+}
+
+
+
+.sign-in-section h2 {
+    font-size: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.sign-in-section h2 span.text {
+/*    background: -webkit-linear-gradient(#eee, #333);*/
+    background: -webkit-linear-gradient(0deg, #0798F1, #A55BEC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 0.5rem;
+}
+
+.sign-in-section form {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 6rem;
+    display: grid;
+}
+
+.sign-in-section input {
+    border: none;
+    text-align: center;
+    margin-top: 4rem;
+    font-size: 2rem;
+    padding: 1rem 0;
+    outline: none;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.sign-in-section input:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sign-in-section input[type="submit"] {
+    border-radius: 5rem;
+    background: linear-gradient(to right, #0798F1, #A55BEC);
+    color: #fff;
+    margin-top: 6rem;
+    cursor: pointer;
+    margin-bottom: 4rem;
+}
+
+.sign-in-section input[type="submit"]:hover {
+    background: linear-gradient(to left, #0798F1, #A55BEC);
+}
+
+.layer {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(to right, #0798F1, #A55BEC);
+    border-radius: 3px;
+}
+
+.sign-in-subtract {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+    z-index: 0;
+}
+>>>>>>> b90ea4356a86fa9b95732f1056b1d9fa2a5eec33
