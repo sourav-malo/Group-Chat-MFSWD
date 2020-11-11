@@ -1,218 +1,3 @@
-<<<<<<< HEAD
-@media only screen and (max-width:360px){
-  header .container .group_list .groups .group .group_description .group_details .last_msg{
-    display: none;
-  }
-  header .container .group_list .groups .group .group_description .group_logo img{
-    width: 20px;
-  }
-  header .container .group_list .groups .group .group_description .group_details .group_name{
-    font-size: 7px;
-  }
-}
-
-
-@media only screen and (max-width:403px){
-    header nav .nav_item .project_logo{
-        margin-left:-10px;
-       }
-       header nav .nav_item .project_logo  .project_img{
-         margin-left: -40px;
-         height: 40px;
-         margin-top: 4px;
-       }
-       header nav .nav_item .profile_section .profile span{
-           display: none;
-       }
-       header nav .nav_item .profile_section{
-         margin-right: -50px;
-       }
-       header nav .nav_item .profile_section .logOutbtn{
-        /* background-color: red; */
-       /* margin-left: 30px; */
-       
-      
-       }
-       header nav .nav_item .profile_section .logOutbtn img{
-         /* margin-left: 20px; */
-         height: 20px;
-         width: 30px;
-       }
-       header nav .nav_item .profile_section .profile{
-           margin-right:30px;
-       }
-       header .container .group_list{
-        width:80vw;
-      }
-       #group_header h3{
-        font-size: 14px;
-      }
-      #group_header h3::after{
-        content: "";
-        margin-top: 18px;
-        width:150%;
-        margin-left:-120%;
-      }
-      header .container .group_list .groups .group .group_description .group_logo img{
-        width:25px;
-       }
-       header .container .group_list .groups .group .group_description .group_details{
-           overflow-y: hidden;
-       }
-       header .container .group_list .groups .group .group_description .group_details .group_name{
-
-        font-size: 13px;
-    }
-    header .container .group_list .groups .group .group_description .group_details .last_msg{
-
-      font-size:10px;
-      margin-top: -18px;
-    }
-    header .container .group_list .groups .group .last_msg_time{
-   font-size: 8px;
-    }
-}
-@media only screen and (max-width:556px){
-    header nav .nav_item .project_logo{
-        margin-left:30px;
-       }
-       header nav .nav_item .profile_section .profile span{
-           display: none;
-           font-size: 10px;
-       }
-       header nav .nav_item .profile_section .logOutbtn{
-        /* background-color: red; */
-        margin-right: 30px;
-      
-       }
-       header nav .nav_item .profile_section .profile{
-           margin-right:30px;
-       }
-       #group_header h3{
-        font-size: 14px;
-      }
-      #group_header h3::after{
-        margin-top: 20px;
-      }
-      header hr{
-        margin-top:-9px;
-    }
-    header .container .group_list{
-      width:75vw;
-    }
-      header .container .group_list .groups .group .group_description .group_logo img{
-        width:25px;
-       }
-       header .container .group_list .groups .group .group_description .group_details{
-           overflow-y: hidden;
-       }
-       header .container .group_list .groups .group .group_description .group_details .group_name{
-
-        font-size: 13px;
-    }
-    header .container .group_list .groups .group .group_description .group_details .last_msg{
-
-      font-size:10px;
-      margin-top: -18px;
-    }
-    header .container .group_list .groups .group .last_msg_time{
-   /* font-size: 8px; */
-   display:none;
-    }
-}
-@media only screen and (max-width:776px){
-    header nav .nav_item .project_logo{
-        margin-left:50px;
-       }
-       header nav .nav_item .profile_section .profile span{
-           /* display: none; */
-           font-size: 13px;
-       }
-       header nav .nav_item .profile_section .logOutbtn{
-        /* background-color: red; */
-        margin-right: 50px;
-      
-       }
-       header nav .nav_item .profile_section .profile{
-           margin-right:30px;
-       }
-       header .container .group_list{
-         width:70vw;
-       }
-       #group_header h3{
-        font-size: 17px;
-      }
-      #group_header h3::after{
-        margin-top: 25px;
-      }
-      header hr{
-        margin-top:-9px;
-    }
-      header .container .group_list .groups .group .group_description .group_logo img{
-        width:32px;
-       }
-       header .container .group_list .groups .group .group_description .group_details{
-           overflow-y: hidden;
-       }
-       header .container .group_list .groups .group .group_description .group_details .group_name{
-
-        font-size: 18px;
-    }
-    header .container .group_list .groups .group .group_description .group_details .last_msg{
-
-      font-size:13px;
-      margin-top: -12px;
-    }
-    header .container .group_list .groups .group .last_msg_time{
-   font-size: 10px;
-    }
-}
-@media only screen and (max-width:991px){
-    header nav .nav_item .project_logo{
-        margin-left:70px;
-       }
-       header nav .nav_item .profile_section .profile span{
-           /* display: none; */
-           font-size: 17px;
-       }
-       header nav .nav_item .profile_section .logOutbtn{
-        /* background-color: red; */
-        margin-right: 70px;
-      
-       }
-       header nav .nav_item .profile_section .profile{
-           margin-right:35px;
-       }
-       #group_header h3{
-        font-size: 24px;
-      }
-      #group_header h3::after{
-        margin-top: 40px;
-      }
-      header hr{
-        margin-top:-9px;
-    }
-      header .container .group_list .groups .group .group_description .group_logo img{
-        width:40px;
-       }
-       header .container .group_list .groups .group .group_description .group_details{
-           overflow-y: hidden;
-       }
-       header .container .group_list .groups .group .group_description .group_details .group_name{
-
-        font-size: 22px;
-    }
-    header .container .group_list .groups .group .group_description .group_details .last_msg{
-
-      font-size:16px;
-      margin-top: -12px;
-    }
-    header .container .group_list .groups .group .last_msg_time{
-   font-size: 14px;
-    }
-}
-=======
-
 @media only screen and (max-width: 1100px) {
     .container.welcome {
         grid-template-columns: 1fr;
@@ -260,12 +45,7 @@
         margin-bottom: 5rem;
     }
 
-    .sign-in-section h2 span.bg{
-        background: rgba(255, 255, 255, 0.6);
-        border-radius: 1rem;
-        margin-right: 0.5rem;
-        padding: 0.3rem 1rem;
-    }
+
 
 
 
@@ -305,8 +85,41 @@
     .sign-in-section {
         min-height: 85rem;
     }
+
+    section.conversation {
+        grid-template-columns: 30rem 1fr;
+    }
+
+    section.conversation .group_name {
+        font-size: 1.7rem;
+    }
+
+    section.conversation .conversation-title h3,
+    section.conversation .group-title h3 {
+        font-size: 2.2rem;
+    }
+
+    section.conversation .conversation-title::after {
+        width: 20rem;
+    }
+
+    .conversation-title,
+    .conversation-title,
+    .conversation-title,
+    .conversation_header {
+        height: 7rem;
+    }
 }
 
+@media only screen and (max-width: 800px) {
+    .groups {
+        width: 100%;
+    }
+
+    nav#nav {
+        padding: 0 5rem;
+    }
+}
 
 @media only screen and (max-width: 700px) {
     .wlcm-img-1 {
@@ -315,6 +128,44 @@
 
     .sign-in-section {
         min-height: 75rem;
+    }
+
+    #Profile_name {
+        display: none;
+    }
+
+
+    section.conversation {
+        grid-template-columns: 7.5rem 1fr;
+    }
+
+    section.conversation .group {
+        padding: 1.5rem;
+    }
+
+    section.conversation .group_description {
+        display: none;
+    }
+
+    section.conversation .conversation-title {
+        background-color: #fff;
+    }
+
+    section.conversation .conversation-title h3 {
+        display: none;
+
+    }
+
+    section.conversation .conversation-title::after {
+        display: none;
+    }
+
+    section.conversation .conversation_header {
+        padding: 0;
+    }
+
+    section.conversation .head_image {
+        margin-left: 0;
     }
 }
 
@@ -333,4 +184,23 @@
         font-size: 8px;
     }
 }
->>>>>>> b90ea4356a86fa9b95732f1056b1d9fa2a5eec33
+
+@media only screen and (max-width: 400px) {
+    nav#nav {
+        padding: 2rem;
+    }
+
+
+
+    .profile_section {
+        margin-top: -0.7rem;
+    }
+
+
+    section.all-conversation .container {
+        padding: 2rem;
+    }
+
+}
+
+/* Sign in page ends here */
