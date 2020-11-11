@@ -1,5 +1,8 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 /* ALL_CONVERSATION PAGE  STYLE START  */
+=======
+>>>>>>> Stashed changes
 body{
     margin:0;
     padding:0;
@@ -7,6 +10,7 @@ body{
 }
 header{
    background-color: #f2f1f1;
+   bac
 }
 
 header nav{
@@ -87,57 +91,70 @@ header hr{
  margin-top: 30px;
  border-radius: 5px;
 }
-header .container{
+header .container,
+section .container
+{
     
 }
-header .container .group_list{
+header .container .group_list,
+section .container .group_list{
  /* background-color: red; */
  width:65vw;
  margin:auto;
 }
-header .container .group_list .groups{
+header .container .group_list .groups,
+section .container .group_list .groups{
  margin-left: 20px;
  margin-top: 20px;
 }
 
-header .container .group_list .groups .group{
+header .container .group_list .groups .group,
+section .container .group_list .groups .group{
  display: flex;
  justify-content: space-between;
  align-items: center;
 }
-header .container .group_list .groups .group .group_description{
+header .container .group_list .groups .group .group_description,
+section .container .group_list .groups .group .group_description{
  display: flex;
  justify-content: space-around;
  align-items: center;
 }
 
-header .container .group_list .groups .group .group_description .group_logo{
+header .container .group_list .groups .group .group_description .group_logo,
+section .container .group_list .groups .group .group_description .group_logo{
 
 }
 
-header .container .group_list .groups .group .group_description .group_logo img{
+header .container .group_list .groups .group .group_description .group_logo img,
+section .container .group_list .groups .group .group_description .group_logo img{
  width:40px;
 }
-header .container .group_list .groups .group .group_description .group_details{
+header .container .group_list .groups .group .group_description .group_details,
+section .container .group_list .groups .group .group_description .group_details{
     margin-left: 20px;
     /* background-color: green; */
     /* height: 80px; */
 
 }
 
-header .container .group_list .groups .group .group_description .group_details .group_name{
+header .container .group_list .groups .group .group_description .group_details .group_name,
+section .container .group_list .groups .group .group_description .group_details .group_name{
 
     font-size: 22px;
 }
 
-header .container .group_list .groups .group .group_description .group_details .last_msg{
+header .container .group_list .groups .group .group_description .group_details .last_msg,
+section .container .group_list .groups .group .group_description .group_details .last_msg{
 
     margin-top: -25px;
     color:black;
 }
-header .container .group_list .groups .group .last_msg_time{
+header .container .group_list .groups .group .last_msg_time,
+section .container .group_list .groups .group .last_msg_time{
 
 }
+<<<<<<< Updated upstream
 /* ALL CONVERSATION  style PAGE END  */
 =======
 *,
@@ -177,133 +194,147 @@ img {
     padding: 5rem;
     margin: 0 auto;
 }
+=======
+>>>>>>> Stashed changes
 
 
-/* Welcome Section */
+.container_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+   
 
-.container.welcome {
-    max-width: 100%;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
 }
-
-.welcome-section,
-.sign-in-section {
-    padding: 5rem;
-    height: 100vh;
-    position: relative;
-}
-
-.welcome-section {
-    text-align: center;
-    background: linear-gradient(to right, #0798F1, #A55BEC);
-}
-
-.wlcm-img-1 {
-    position: absolute;
-    top: 0;
-    left: 0;
+.left_side{
     width: 40%;
+    background-color: #E2DFDF;
+    overflow: hidden;
 }
 
-.wlcm-img-2 {
-    width: 8rem;
-    margin-top: 5rem;
-}
+.right_side{
 
-.welcome-section h1 {
-    font-size: 6rem;
-    color: #eee;
-    font-weight: 500;
-    margin: 2rem 0;
-}
-
-.welcome-section p {
-    font-size: 2rem;
-    color: #fff;
-    opacity: 0.5;
-}
-
-img.wlcm-subtract {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    min-width: 100%;
-}
-
-
-
-
-
-.sign-in-section {
-    text-align: center;
-
-}
-
-
-
-.sign-in-section h2 {
-    font-size: 3rem;
-    margin-top: 5rem;
-    margin-bottom: 3rem;
-}
-
-.sign-in-section h2 span.text {
-/*    background: -webkit-linear-gradient(#eee, #333);*/
-    background: -webkit-linear-gradient(0deg, #0798F1, #A55BEC);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-right: 0.5rem;
-}
-
-.sign-in-section form {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 6rem;
-    display: grid;
-}
-
-.sign-in-section input {
-    border: none;
-    text-align: center;
-    margin-top: 4rem;
-    font-size: 2rem;
-    padding: 1rem 0;
-    outline: none;
+    
     position: relative;
-    transition: background-color 0.3s;
+    height: 100vh;
+    width: 60%;
+   
+    display: flex;
+    flex-direction: column;
 }
 
-.sign-in-section input:focus {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.sign-in-section input[type="submit"] {
-    border-radius: 5rem;
-    background: linear-gradient(to right, #0798F1, #A55BEC);
-    color: #fff;
-    margin-top: 6rem;
-    cursor: pointer;
-    margin-bottom: 4rem;
-}
-
-.sign-in-section input[type="submit"]:hover {
-    background: linear-gradient(to left, #0798F1, #A55BEC);
-}
-
-.layer {
-    height: 4px;
+.right_side hr{
+    color: #999999;
     width: 100%;
-    background: linear-gradient(to right, #0798F1, #A55BEC);
-    border-radius: 3px;
+    margin-bottom:2px ;
+    
+}
+.right_header{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+.head_image img
+{
+    height: 45px;
+    width: 45px;
+    
 }
 
-.sign-in-subtract {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: none;
-    z-index: 0;
+.sender_image img,
+.receiver_image img
+{
+    height: 42px;
+    width: 45px;
+    border-radius: 50%;
+    box-sizing: border-box;
+     margin-top: 7px;
 }
->>>>>>> b90ea4356a86fa9b95732f1056b1d9fa2a5eec33
+
+.right_container{
+    margin-top: 30px;
+    margin-left: 20px;
+display: flex;
+flex-direction: column;
+}
+.sender,
+.receiver
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    
+
+    
+}
+.message_details{
+    flex-direction: column;
+    color: #9C9A9A;
+    margin-left: 20px;
+   
+    
+
+}
+.message_details .message{
+     background-color: #F0ECEC;
+     border-radius: 10px;
+}
+.nick_name{
+    margin-bottom: 0;
+}
+
+
+  .message_details .nick_name{
+      font-size: 12px;
+  }
+  .message_details .message{
+      margin:0;
+      font-size: 17px;
+      font-weight: 200px;
+      color: #696464;
+
+  }
+  .time_date{
+      margin-top: 0;
+      font-size: 10px;
+  }
+  
+ .seen img{
+     margin-top: 32px;
+     margin-left: 9px;
+ }
+ .receiver {
+     margin-left: 65%;
+ }
+ 
+ .message_typing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+ .type_info{
+     display: flex;
+     flex-direction: row;
+     position: relative;
+
+ }
+ .typing_check{
+     color:#00000063 ;
+     margin-bottom: 2px;
+ }
+ .type_box input[type=text]{
+     position: relative;
+  width: 42rem;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: #8d8b8e5b;
+
+}
+.sent_logo{
+    margin-left: 10px;
+    margin-top: 10px;
+}
