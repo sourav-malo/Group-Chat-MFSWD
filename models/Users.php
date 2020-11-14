@@ -47,5 +47,17 @@
 
       return $stmt;
     }
+
+
+
+    public function isSignedIn(){
+      if(isset($_SESSION['user']['id'])){
+       return true;
+      }
+      else {
+        return false;
+      }
+
+    }
   }
 ?>
