@@ -19,12 +19,12 @@
       $this->conn = $db;
     }
 
-    // Logout Player
+    // user signed out
     public function signOut() {
       unset($_SESSION['user']['id']);
     }
 
-    // Read Single Player
+    // Read Single User
     public function readSingle() {
       // Create Query
       $query = "SELECT * 
@@ -48,16 +48,9 @@
       return $stmt;
     }
 
-
-
+    // Checking if the user is signed in
     public function isSignedIn(){
-      if(isset($_SESSION['user']['id'])){
-       return true;
-      }
-      else {
-        return false;
-      }
-
+      isset($_SESSION['user']['id']) ? return true : return false;
     }
   }
 ?>
