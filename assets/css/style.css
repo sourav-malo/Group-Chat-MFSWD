@@ -156,8 +156,41 @@ img.wlcm-subtract {
     display: none;
     z-index: 0;
 }
+/* Modifie index.html page Error box  */
+#usernameError, #passwordError{
+font-size: 1.3rem;
+}
+/* valid or invalid class */
+
+ .validusername input#username{
+ background:url('../img/error/valid.png');
+ background-size: 25px;
+ background-repeat: no-repeat;
+background-position: right;
+}
+.invalidusername input#username{
+    background:url('../img/error/invalid.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+   background-position: right;
+   }
+
+
+   .validpassword input#password{
+    background:url('../img/error/valid.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+   background-position: right;
+   }
+   .invalidpassword input#password{
+       background:url('../img/error/invalid.png');
+       background-size: 25px;
+       background-repeat: no-repeat;
+      background-position: right;
+      }
 
 /* Sign-in Ends here */
+
 
 
 

@@ -50,7 +50,8 @@
 
     // Checking if the user is signed in
     public function isSignedIn(){
-      isset($_SESSION['user']['id']) ? return true : return false;
+      // isset($_SESSION['user']['id']) ? return true : return false;
+      return(isset($_SESSION['user']['id']) ? true : false);
     }
   }
 ?>

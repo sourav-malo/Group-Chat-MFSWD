@@ -26,12 +26,15 @@
         <div class="sign-in-section">
             <img src="assets/img/page-content/sign-in-logo.png" alt="" class="sign-in-logo">
             <h2><span class="bg"><span class="text">Sign in</span></span>Your Account</h2>
-            <form action="" id="sign-in-form">
-                <input type="text" placeholder="Username" id="username">
+            <form action="all_conversation.html" id="sign-in-form" class="">
+                <input type="text" placeholder="Username" id="username" onkeydown="usernameValidation()" required >
+                
                 <div class="layer"></div>
-                <input type="password" placeholder="Password" id="password">
+                <span id="usernameError"></span>
+                <input type="password" placeholder="Password" id="password" onkeydown="passwordValidation()" required>
                 <div class="layer"></div>
-                <input type="submit" value="Submit">
+                <span id="passwordError"></span>
+                <input type="submit" value="Submit" id="signInFormSubmit">
             </form>
             <img src="assets/img/page-content/subtract.png" alt="" class="sign-in-subtract">
         </div>
