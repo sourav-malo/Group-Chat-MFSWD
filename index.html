@@ -27,11 +27,11 @@
             <img src="assets/img/page-content/sign-in-logo.png" alt="" class="sign-in-logo">
             <h2><span class="bg"><span class="text">Sign in</span></span>Your Account</h2>
             <form action="all_conversation.html" id="sign-in-form" class="">
-                <input type="text" placeholder="Username" id="username" onkeydown="usernameValidation()" required >
+                <input type="text" placeholder="Username" id="username" oninput="usernameValidation()" required >
                 
                 <div class="layer"></div>
                 <span id="usernameError"></span>
-                <input type="password" placeholder="Password" id="password" onkeydown="passwordValidation()" required>
+                <input type="password" placeholder="Password" id="password" oninput="passwordValidation()" required>
                 <div class="layer"></div>
                 <span id="passwordError"></span>
                 <input type="submit" value="Submit" id="signInFormSubmit">

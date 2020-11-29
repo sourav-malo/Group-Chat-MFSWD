@@ -53,5 +53,34 @@
       // isset($_SESSION['user']['id']) ? return true : return false;
       return(isset($_SESSION['user']['id']) ? true : false);
     }
+
+    // Check user is Active or Deactive
+    public function activeStatus(){
+       session_start();
+       $UID=$_SESSION['user']['id'];
+      $query="SELECT * FROM users WHERE id='$UID';";
+      $stmt=$this->conn->prepare($query);
+      $stmt->execute();
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+       $last_sign_in= $row['is_active'];
+      $time=time();
+      $msg="";
+      if($time>$last_sign_in){
+       return false;
+      }
+      else {
+        return true;
+      }
+    }
+
+   //Update is_active status
+   public function updateActiveStatus(){
+     session_start();
+     $time=time()+10;
+      $UID=$_SESSION['user']['id'];
+      $query="UPDATE `users` SET `is_active`='$time' WHERE id ='$UID' ;";
+      $stmt=$this->conn->prepare($query);
+      $stmt->execute();
+   }
   }
 ?>
