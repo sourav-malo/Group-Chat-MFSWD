@@ -27,7 +27,7 @@
     if($stmt->rowCount()) {
       // Get Result
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+      
       // Set session for user
       session_start();
       $_SESSION['user']['id'] = $result['id'];

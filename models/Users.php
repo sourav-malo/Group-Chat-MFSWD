@@ -27,7 +27,7 @@
     // Read Single User
     public function readSingle() {
       // Create Query
-      $query = "SELECT * 
+      $query = "SELECT *  
         FROM $this->table 
       WHERE 
         username = :username
