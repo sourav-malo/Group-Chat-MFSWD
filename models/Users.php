@@ -13,6 +13,7 @@
     public $createdAt;
     public $haveImage;
     public $isActive;
+    public $is_type;
 
     // Constructor with DB
     public function __construct($db) {
@@ -50,7 +51,6 @@
 
     // Checking if the user is signed in
     public function isSignedIn(){
-      // isset($_SESSION['user']['id']) ? return true : return false;
       return(isset($_SESSION['user']['id']) ? true : false);
     }
 
@@ -81,6 +81,45 @@
       $query="UPDATE `users` SET `is_active`='$time' WHERE id ='$UID' ;";
       $stmt=$this->conn->prepare($query);
       $stmt->execute();
+   }
+
+   //Update is type status
+   public function updateIsType(){
+    $query='UPDATE '.$this->table.' 
+    SET 
+        is_type=:is_type
+          WHERE id=:id;';
+
+
+       // prepared statment
+       $stmt=$this->conn->prepare($query);  
+       $this->is_type=htmlspecialchars(strip_tags($this->is_type));
+       $this->id=htmlspecialchars(strip_tags($this->id));
+
+       ///Bind param
+       $stmt->bindParam(':is_type',$this->is_type);
+       $stmt->bindParam(':id',$this->id);
+       if($stmt->execute()){
+         return true;
+       }
+       else{
+         return false;
+       }
+   }
+
+   //Check Is type   Status
+   public function is_Type(){
+       $query="SELECT * FROM ".$this->table." WHERE id=:id;";
+
+       //Prepare statement
+       $stmt=$this->conn->prepare($query);
+       $this->id=htmlspecialchars(strip_tags($this->id));
+      
+       ///Bind param
+      $stmt->bindParam(':id',$this->id);
+
+       $stmt->execute();
+       return $stmt;
    }
   }
 ?>
