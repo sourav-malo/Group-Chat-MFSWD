@@ -14,7 +14,7 @@ if(isset($data->group_id)){
      $result=$message->read_Group_Allmessage();
     if($result->rowCount()){
        
-        $row=$result->fetchAll(PDO::FETCH_ASSOC);
+       $row=$result->fetchAll(PDO::FETCH_ASSOC);
         $post_arr['data']=$row;
       echo json_encode($post_arr);
     }
