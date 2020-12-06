@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +42,7 @@
           </div>
 
           <div class="logOutbtn">
-            <a href="#"
+            <a href="logout.php"
               ><img
                 src="assets/img/logo/signout.png"
                 alt="Profile_img"
@@ -319,13 +326,13 @@
           <p class="typing_check">An user is typing.....</p>
           <div class="type_info">
             <div class="type_box">
-              <input type="text" placeholder="Send Message" />
+              <input type="text" placeholder="Type here" />
             </div>
             <div class="sent_logo">
               <img
                 height="32px"
                 width="32px"
-                src="/assets/img/logo/sent.png"
+                src="assets/img/logo/sent.png"
                 alt=""
               />
             </div>

@@ -16,9 +16,9 @@ $messages=new Messages($db);
 // Get row posted data 
 $data = json_decode(file_get_contents("php://input"));
 
- $messages->group_id=$data->group_id;
- $messages->user_id=$data->user_id;
- $messages->message=$data->message;
+$messages->group_id=$data->group_id;
+$messages->user_id=$data->user_id;
+$messages->message=$data->message;
  //Create post{
     if($messages->send_Messages()){
         echo json_encode(

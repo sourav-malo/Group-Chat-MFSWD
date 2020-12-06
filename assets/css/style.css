@@ -412,7 +412,7 @@ section.conversation {
 
 .conversation-title,
 .conversation_header {
-  height: 9rem;
+  height: 5.5rem;
   font-size: 2rem;
   position: relative;
 }
@@ -430,7 +430,7 @@ section.conversation {
 .conversation .group {
   width: 100%;
   margin: 0 0;
-  padding: 2rem 2.5rem;
+  padding: 1rem 2.5rem;
   display: grid;
   grid-template-columns: auto 1fr;
   position: relative;
@@ -464,7 +464,7 @@ section.conversation {
 .conversation_header {
   width: 100%;
   background-color: #fff;
-  padding: 1.5rem;
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: auto 1fr;
   align-content: center;
@@ -491,6 +491,7 @@ section.conversation {
 
 .conversation-expand {
   background-color: #fff;
+  height: calc(100vh - 60px);
 }
 
 .conversation-desc {
@@ -498,6 +499,8 @@ section.conversation {
   grid-template-columns: 1fr;
   align-content: flex-end;
   padding-top: 3rem;
+  height: calc(100% - 14rem);
+  overflow-y: auto;
 }
 
 .incoming-msg,
@@ -667,21 +670,24 @@ span.time_date {
 }
 
 .message_typing {
-  width: 100%;
+  width: calc(100vw - 40rem);
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #ddd;
 }
 
 p.typing_check {
   font-size: 1.8rem;
   opacity: 0.6;
-  margin: 1rem 0;
 }
 
 .type_info {
   border-top: 0.1rem solid #aaa;
   display: grid;
   grid-template-columns: 1fr auto;
-  padding: 1.5rem 3rem;
+  padding: 1rem 3rem;
 }
 
 .type_box {
@@ -696,7 +702,7 @@ p.typing_check {
   padding: 1rem 2rem;
   border: none;
   outline: none;
-  background-color: #ddd;
+  background-color: #fff;
   border-radius: 5rem;
   font-size: 1.6rem;
 }

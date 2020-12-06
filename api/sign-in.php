@@ -39,7 +39,9 @@
       $_SESSION['user']['haveImg'] = $result['have_image'];
       $_SESSION['user']['isActive'] = $result['is_active'];
 
-      echo json_encode(array('status' => 'Success')); // Return success message
+      // header('location: ../conversation.php');
+
+      echo json_encode(array('status' => 'Success', 'user' => $result)); // Return success message
     } else {
       echo json_encode(array('status' => 'Failure')); // Return failure message
     }
