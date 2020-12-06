@@ -1,3 +1,20 @@
+<?php
+
+
+  // include_once 'config/Database.php';
+  // include_once 'models/Users.php';
+  // include_once 'api/sign-in.php';
+  
+  session_start();
+  
+  if (isset($_SESSION['user']['id'])) {
+    header('location: conversation.php');
+  }
+  
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,9 +62,9 @@
           class="sign-in-logo"
         />
         <h2>
-          <span class="bg"><span class="text">Sign in</span></span
-          >Your Account
+          <span class="bg"><span class="text">Sign in</span></span> Your Account
         </h2>
+        <p>sujan_mridha</p>
         <form action="all_conversation.html" id="sign-in-form" class="">
           <input
             type="text"

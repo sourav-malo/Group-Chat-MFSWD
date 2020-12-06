@@ -1,206 +1,190 @@
 @media only screen and (max-width: 1100px) {
-    .container.welcome {
-        grid-template-columns: 1fr;
-    }
+  .container.welcome {
+    grid-template-columns: 1fr;
+  }
 
-    .welcome-section {
-        padding-bottom: 0
-    }
+  .welcome-section {
+    padding-bottom: 0;
+  }
 
-    .wlcm-img-1 {
-        width: 30%;
-    }
+  .wlcm-img-1 {
+    width: 30%;
+  }
 
-    .wlcm-img-2 {
-        margin-top: 8rem;
-    }
+  .wlcm-img-2 {
+    margin-top: 8rem;
+  }
 
-    .welcome-section p {
-        display: none;
-    }
+  .welcome-section p {
+    display: none;
+  }
 
-    img.wlcm-subtract {
-        display: none;
-    }
+  img.wlcm-subtract {
+    display: none;
+  }
 
-    .welcome-section,
-    .sign-in-section {
-        height: auto;
-        background: linear-gradient(to right, #0798F1, #A55BEC);
-    }
+  .welcome-section,
+  .sign-in-section {
+    height: auto;
+    background: linear-gradient(to right, #0798f1, #a55bec);
+  }
 
-    .sign-in-section {
-        min-height: 90rem;
-        padding-top: 1rem;
-    }
+  .sign-in-section {
+    min-height: 90rem;
+    padding-top: 1rem;
+  }
 
-    .sign-in-logo {
-        display: none;
-    }
+  .sign-in-logo {
+    display: none;
+  }
 
-    .sign-in-section h2 {
-        margin-top: 0;
-        color: #fff;
-        opacity: 0.7;
-        margin-bottom: 5rem;
-    }
+  .sign-in-section h2 {
+    margin-top: 0;
+    color: #fff;
+    opacity: 0.7;
+    margin-bottom: 5rem;
+  }
 
+  .sign-in-section form {
+    max-width: 80%;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 2rem;
+    margin-top: 0;
+    border-radius: 2rem;
+  }
 
+  .sign-in-section input {
+    background: rgba(200, 200, 200, 0.3);
+  }
 
+  .sign-in-section input[type='submit'] {
+    margin: 0 auto;
+    margin-top: 6rem;
+    width: 100%;
+    max-width: 30rem;
+    margin-bottom: 4rem;
+  }
 
-
-
-
-
-    .sign-in-section form {
-        max-width: 80%;
-        background: rgba(255, 255, 255, 0.3);
-        padding: 2rem;
-        margin-top: 0;
-        border-radius: 2rem;
-    }
-
-    .sign-in-section input {
-        background: rgba(200, 200, 200, 0.3);
-    }
-
-
-
-    .sign-in-section input[type="submit"] {
-        margin: 0 auto;
-        margin-top: 6rem;
-        width: 100%;
-        max-width: 30rem;
-        margin-bottom: 4rem;
-    }
-
-    img.sign-in-subtract {
-        display: block;
-    }
+  img.sign-in-subtract {
+    display: block;
+  }
 }
 
-
-
 @media only screen and (max-width: 900px) {
-    .sign-in-section {
-        min-height: 85rem;
-    }
+  .sign-in-section {
+    min-height: 85rem;
+  }
 
-    section.conversation {
-        grid-template-columns: 30rem 1fr;
-    }
+  section.conversation {
+    grid-template-columns: 30rem 1fr;
+  }
 
-    section.conversation .group_name {
-        font-size: 1.7rem;
-    }
+  section.conversation .group_name {
+    font-size: 1.7rem;
+  }
 
-    section.conversation .conversation-title h3,
-    section.conversation .group-title h3 {
-        font-size: 2.2rem;
-    }
+  section.conversation .conversation-title h3,
+  section.conversation .group-title h3 {
+    font-size: 2.2rem;
+  }
 
-    section.conversation .conversation-title::after {
-        width: 20rem;
-    }
+  section.conversation .conversation-title::after {
+    width: 20rem;
+  }
 
-    .conversation-title,
-    .conversation-title,
-    .conversation-title,
-    .conversation_header {
-        height: 7rem;
-    }
+  .message_typing {
+    width: calc(100vw - 30rem);
+  }
 }
 
 @media only screen and (max-width: 800px) {
-    .groups {
-        width: 100%;
-    }
+  .groups {
+    width: 100%;
+  }
 
-    nav#nav {
-        padding: 0 5rem;
-    }
+  nav#nav {
+    padding: 0 5rem;
+  }
 }
 
 @media only screen and (max-width: 700px) {
-    .wlcm-img-1 {
-        width: 40%;
-    }
+  .wlcm-img-1 {
+    width: 40%;
+  }
 
-    .sign-in-section {
-        min-height: 75rem;
-    }
+  .sign-in-section {
+    min-height: 75rem;
+  }
 
-    #Profile_name {
-        display: none;
-    }
+  #Profile_name {
+    display: none;
+  }
 
+  section.conversation {
+    grid-template-columns: 7.5rem 1fr;
+  }
 
-    section.conversation {
-        grid-template-columns: 7.5rem 1fr;
-    }
+  section.conversation .group {
+    padding: 1rem 1.5rem;
+  }
 
-    section.conversation .group {
-        padding: 1.5rem;
-    }
+  section.conversation .group_description {
+    display: none;
+  }
 
-    section.conversation .group_description {
-        display: none;
-    }
+  section.conversation .conversation-title {
+    background-color: #fff;
+  }
 
-    section.conversation .conversation-title {
-        background-color: #fff;
-    }
+  section.conversation .conversation-title h3 {
+    display: none;
+  }
 
-    section.conversation .conversation-title h3 {
-        display: none;
+  section.conversation .conversation-title::after {
+    display: none;
+  }
 
-    }
+  section.conversation .conversation_header {
+    padding: 0;
+  }
 
-    section.conversation .conversation-title::after {
-        display: none;
-    }
+  section.conversation .head_image {
+    margin-left: 0;
+  }
 
-    section.conversation .conversation_header {
-        padding: 0;
-    }
-
-    section.conversation .head_image {
-        margin-left: 0;
-    }
+  .message_typing {
+    width: calc(100vw - 7.5rem);
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .sign-in-section {
-        padding: 0;
-    }
+  .sign-in-section {
+    padding: 0;
+  }
 
-    .sign-in-section form {
-        width: 95%;
-    }
+  .sign-in-section form {
+    width: 95%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
-    html {
-        font-size: 8px;
-    }
+  html {
+    font-size: 8px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
-    nav#nav {
-        padding: 2rem;
-    }
+  nav#nav {
+    padding: 2rem;
+  }
 
+  .profile_section {
+    margin-top: -0.7rem;
+  }
 
-
-    .profile_section {
-        margin-top: -0.7rem;
-    }
-
-
-    section.all-conversation .container {
-        padding: 2rem;
-    }
-
+  section.all-conversation .container {
+    padding: 2rem;
+  }
 }
 
 /* Sign in page ends here */

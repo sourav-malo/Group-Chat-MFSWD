@@ -44,6 +44,5 @@ public function read_Group_Allmessage(){
    $stmt->execute();
    return $stmt;
 }
-    
 }
 ?>
