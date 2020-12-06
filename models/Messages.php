@@ -18,7 +18,7 @@ Class Messages{
        $query='INSERT INTO '. $this->table .'
        SET group_id=:group_id,
        user_id=:user_id,
-          message=:message;';
+          message=:message ORDER BY send_at DESC;';
     //    Prepare statement
        $stmt=$this->conn->prepare($query);
     //    Bind Parameter 
