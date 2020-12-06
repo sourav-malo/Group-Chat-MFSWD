@@ -101,57 +101,13 @@ signInForm.addEventListener('submit', (e) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      // setSessionAndRenderChat(data.user)
+      console.log('Hello')
+      window.location.href = 'conversation.php'
     })
     .catch((err) => console.log(err))
   /*
-  const xhr = new XMLHttpRequest()
-  xhr.open('POST', 'api/sign-in.php', true)
-  xhr.addEventListener('load', () => {
-    if (xhr.status == 200 && xhr.readyState == 4) {
-      var responseResult = JSON.parse(xhr.response)
-      if (responseResult.status == 'Success') {
-        console.log(responseResult.responseText)
-        alert('Login Successfully')
-        // Get a page  when youser logined in successfully
-        var xhttp = new XMLHttpRequest()
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            document.querySelector('body').innerHTML = this.responseText
-          }
-        }
-        xhttp.open('GET', 'conversation.php', true)
-        xhttp.send()
-        #end load this page
-      } else {
-        alert('This Is Not Valid Username and Password!')
-      }
-    }
-  })
   xhr.send(JSON.stringify(body))
   } else {
     alert('Please check the User Input!')
   }*/
 })
-
-function setSessionAndRenderChat(user) {
-  console.log(user)
-  fetch('set-session.php', {
-    method: 'POST',
-    body: JSON.stringify({
-      created_at: user.created_at,
-      first_name: user.first_name,
-      have_image: user.have_image,
-      id: user.id,
-      is_active: user.is_active,
-      last_name: user.last_name,
-      password: user.password,
-      username: user.username,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-    })
-    .catch((err) => console.log(err))
-}

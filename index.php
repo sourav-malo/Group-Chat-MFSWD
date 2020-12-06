@@ -96,5 +96,12 @@
     </div>
 
     <script src="assets/js/sign-in.js"></script>
+    <script>
+      function checkSession()  {
+        console.log("HellO sldk dfks")
+      }
+
+
+    </script>
   </body>
 </html>
