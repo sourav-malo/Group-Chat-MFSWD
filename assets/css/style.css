@@ -43,12 +43,13 @@ img {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .welcome-section,
 .sign-in-section {
   padding: 5rem;
-  height: 100vh;
   position: relative;
 }
 
@@ -58,10 +59,11 @@ img {
 }
 
 .wlcm-img-1 {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 40%;
+  width: 35rem;
+  z-index: 6;
 }
 
 .wlcm-img-2 {
@@ -102,7 +104,7 @@ img.wlcm-subtract {
 .sign-in-section form {
   width: 80%;
   margin: 0 auto;
-  margin-top: 6rem;
+  margin-top: 0;
   display: grid;
 }
 
@@ -226,7 +228,7 @@ header nav {
 }
 
 .profile:hover {
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .profile img {
@@ -491,16 +493,21 @@ section.conversation {
 
 .conversation-expand {
   background-color: #fff;
-  height: calc(100vh - 60px);
+  /* height: calc(100vh - 60px); */
+  height: auto;
+  position: relative;
 }
 
 .conversation-desc {
   display: grid;
   grid-template-columns: 1fr;
-  align-content: flex-end;
   padding-top: 3rem;
-  height: calc(100% - 14rem);
   overflow-y: auto;
+  position: fixed;
+  right: 0;
+  left: 40rem;
+  top: 11.5rem;
+  bottom: 8.1rem;
 }
 
 .incoming-msg,
@@ -672,7 +679,7 @@ span.time_date {
 .message_typing {
   width: calc(100vw - 40rem);
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   background-color: #ddd;

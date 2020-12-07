@@ -1,20 +1,13 @@
-<?php
-  session_start();
-
-  
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="assets/img/logo/group_logo.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>conversation</title>
+    <title>Group Chat | MFSWD | Conversation</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css" />
-    <script src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/conversation.js" defer></script>
   </head>
 
   <body class="conversation-in-details">
@@ -32,23 +25,17 @@
         </div>
         <div id="profile_section" class="profile_section">
           <div class="profile">
+            <img src="" alt="" id="profile_img" class="profile_img" />
+            <span id="Profile_name"></span>
+          </div>
+
+          <div class="logOutbtn" id="logOutbtn">
             <img
-              src="assets/img/users/rokibul_hasan_rijon.jpg"
+              src="assets/img/logo/signout.png"
               alt="Profile_img"
               id="profile_img"
               class="profile_img"
             />
-            <span id="Profile_name">Md. Rokibul Hasan</span>
-          </div>
-
-          <div class="logOutbtn">
-            <a href="logout.php"
-              ><img
-                src="assets/img/logo/signout.png"
-                alt="Profile_img"
-                id="profile_img"
-                class="profile_img"
-            /></a>
           </div>
         </div>
       </nav>
@@ -200,7 +187,7 @@
             <p class="message">
               <span class="message-body">Is there any way to solve it?</span>
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="nick_name">Rayhan</span>
@@ -218,7 +205,7 @@
             <p class="message">
               <span class="message-body">I guess not.</span>
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="nick_name">Razin</span>
@@ -236,7 +223,7 @@
             <p class="message first-msg">
               <span class="message-body">No, There's a way.</span>
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="time_date">
@@ -249,7 +236,7 @@
             <p class="message btw-msg">
               <span class="message-body">Simple.</span>
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="time_date">
@@ -264,7 +251,7 @@
                 >Just we will requir the proper use of web development.</span
               >
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="time_date">
@@ -280,7 +267,7 @@
             <p class="message first-msg">
               <span class="message-body">Enlighten us.</span>
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="nick_name">Nayem</span>
@@ -295,7 +282,7 @@
             <p class="message btw-msg">
               <span class="message-body">Enlighten us.</span>
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="time_date">
@@ -310,7 +297,7 @@
                 >Can we solve this problem with Asynconous Javascript?</span
               >
               <span class="seen">
-                <img src="/assets/img/logo/visible.png" alt="" />
+                <img src="assets/img/logo/visible.png" alt="" />
               </span>
             </p>
             <span class="time_date">

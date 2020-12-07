@@ -31,17 +31,16 @@
       // Set session for user
       session_start();
       $_SESSION['user']['id'] = $result['id'];
-      $_SESSION['user']['firstName'] = $result['first_name'];
-      $_SESSION['user']['lastName'] = $result['last_name'];
+      $_SESSION['user']['first_name'] = $result['first_name'];
+      $_SESSION['user']['last_name'] = $result['last_name'];
       $_SESSION['user']['username'] = $result['username'];
       $_SESSION['user']['password'] = $result['password'];
-      $_SESSION['user']['createdAt'] = $result['created_at'];
-      $_SESSION['user']['haveImg'] = $result['have_image'];
-      $_SESSION['user']['isActive'] = $result['is_active'];
+      $_SESSION['user']['created_at'] = $result['created_at'];
+      $_SESSION['user']['have_image'] = $result['have_image'];
+      $_SESSION['user']['is_active'] = $result['is_active'];
 
-      // header('location: ../conversation.php');
 
-      echo json_encode(array('status' => 'Success', 'user' => $result)); // Return success message
+      echo json_encode(array('status' => 'Success')); // Return success message
     } else {
       echo json_encode(array('status' => 'Failure')); // Return failure message
     }
