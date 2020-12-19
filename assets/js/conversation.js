@@ -1,4 +1,6 @@
 import signOut from './sign-out.js'
+import  groupRender from './all-conversation.js'
+
 const logOutbtn = document.getElementById('logOutbtn'),
   profileName = document.getElementById('Profile_name'),
   profileImg = document.getElementById('profile_img')
@@ -23,3 +25,7 @@ function setUserInfo(fullname, username) {
   profileName.innerText = fullname
   profileImg.src = 'assets/img/users/' + username + '.jpg'
 }
+// Call imported function 
+groupRender();
+
+

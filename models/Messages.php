@@ -18,7 +18,7 @@ Class Messages{
        $query='INSERT INTO '. $this->table .'
        SET group_id=:group_id,
        user_id=:user_id,
-          message=:message ORDER BY send_at DESC;';
+          message=:message;';
     //    Prepare statement
        $stmt=$this->conn->prepare($query);
     //    Bind Parameter 
@@ -37,12 +37,30 @@ Class Messages{
 //  Receive group message 
 public function read_Group_Allmessage(){
    $sql='SELECT * FROM '.$this->table .' WHERE  group_id=:group_id;';
+
    // Prepare The data
    $stmt=$this->conn->prepare($sql);
+
    // Bind param 
    $stmt->bindParam(":group_id",$this->group_id);
    $stmt->execute();
    return $stmt;
+}
+    
+
+//   Read single last msg each group
+public function read_last_message_allgroups(){
+   $sql="SELECT users.id, users.first_name, users.username, messages.message, messages.sent_at FROM users JOIN messages on messages.user_id=users.id WHERE messages.group_id=:id  ORDER by messages.sent_at DESC LIMIT 1;";
+
+   // prepare the data 
+   $stmt=$this->conn->prepare($sql);
+
+   // Bind param 
+   $stmt->bindParam(":id",$this->id);
+
+   $stmt->execute();
+   return $stmt;
+
 }
 }
 ?>

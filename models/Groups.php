@@ -20,7 +20,7 @@
     }
      //Read groups function
      public function read_groups(){
-         $query="SELECT  groups.id, groups.name, groups.created_at, groups.have_image FROM groups  LEFT JOIN group_members ON groups.id=group_members.group_id WHERE group_members.user_id=:id;";
+         $query="SELECT  groups.id, groups.name, groups.short_name, groups.created_at, groups.have_image FROM groups  LEFT JOIN group_members ON groups.id=group_members.group_id WHERE group_members.user_id=:id;";
           
          //Prepare Statement.
          $stmt=$this->conn->prepare($query);

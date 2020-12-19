@@ -21,6 +21,7 @@
             $groups_item=array(
               'id'=>$id,
                'name'=>$name,
+               'short_name'=>$short_name,
                'created_at'=>$created_at,
                'have_image'=>$have_image
             );
