@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2020 at 02:51 AM
+-- Generation Time: Dec 20, 2020 at 03:59 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.30
+-- PHP Version: 7.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `groups` (
   `id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `short_name` varchar(20) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `short_name` varchar(30) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `have_image` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -40,7 +41,7 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `name`, `short_name`, `created_at`, `have_image`) VALUES
-(1, 'JavaScript Developer', 'javascript_developer', '2020-11-06 01:16:23', 0),
+(1, 'JavaScript Developers', 'javascript_developers', '2020-11-06 01:16:23', 0),
 (2, 'PHP Developers', 'php_developers', '2020-11-06 01:16:23', 0),
 (3, 'Python Developers', 'python_developers', '2020-11-06 01:17:45', 0),
 (4, 'Swift Developers', 'swift_developers', '2020-11-06 01:17:45', 0),
@@ -127,6 +128,18 @@ CREATE TABLE `messages` (
   `sent_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `group_id`, `user_id`, `message`, `sent_at`) VALUES
+(24, 1, 14, 'sssss', '2020-12-19 16:35:17'),
+(25, 2, 3, 'sssssss', '2020-12-19 16:38:47'),
+(26, 3, 4, 'xgdxxxvxv', '2020-12-19 16:39:17'),
+(27, 4, 10, 'sdfgfdsgdf', '2020-12-19 16:39:17'),
+(28, 5, 7, 'ssdsdd', '2020-12-19 16:39:39'),
+(29, 1, 8, 'ssssss', '2020-12-19 17:50:07');
+
 -- --------------------------------------------------------
 
 --
@@ -152,29 +165,30 @@ CREATE TABLE `users` (
   `password` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `have_image` tinyint(1) NOT NULL DEFAULT 0,
-  `is_active` tinyint(1) NOT NULL DEFAULT 1
+  `is_active` bigint(1) NOT NULL DEFAULT 1,
+  `is_type` enum('on','off','','') NOT NULL DEFAULT 'off'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `created_at`, `have_image`, `is_active`) VALUES
-(1, 'Razinul', 'Karim', 'razinul_karim', 'razinul_karim', '2020-11-06 01:15:14', 0, 1),
-(2, 'Rashed Hasan', 'Siam', 'rashed_hasan_siam', 'rashed_hasan_siam', '2020-11-06 01:15:14', 0, 1),
-(3, 'Fadil', 'Ahnaf', 'fadil_ahnaf', 'fadil_ahnaf', '2020-11-06 01:15:14', 0, 1),
-(4, 'Hasan', 'Shahrirar', 'hasan_shahriar', 'hasan_shahriar', '2020-11-06 01:15:14', 0, 1),
-(5, 'Sourav', 'Malo', 'sourav_malo', 'sourav_malo', '2020-11-06 01:15:14', 0, 1),
-(6, 'Jyotirmoy', 'Halder', 'jyotirmoy_halder', 'jyotirmoy_halder', '2020-11-06 01:15:14', 0, 1),
-(7, 'Md Anis', 'Molla', 'md_anis_molla', 'md_anis_molla', '2020-11-06 01:15:14', 0, 1),
-(8, 'Al Shahriar', 'Tonmoy', 'al_shahriar_tonmoy', 'al_shahriar_tonmoy', '2020-11-06 01:15:14', 0, 1),
-(9, 'Md', 'Sayem', 'md_sayem', 'md_sayem', '2020-11-06 01:15:14', 0, 1),
-(10, 'Sujan ', 'Mridha', 'sujan_mridha', 'sujan_mridha', '2020-11-06 01:15:14', 0, 1),
-(11, 'Md', 'Rahat', 'md_rahat', 'md_rahat', '2020-11-06 01:15:14', 0, 1),
-(12, 'Tarikul Islam', 'Sumom', 'tarikul_islam_sumon', 'tarikul_islam_sumon', '2020-11-06 01:15:14', 0, 1),
-(13, 'Nayem', 'Zaman', 'nayem_zaman', 'nayem_zaman', '2020-11-06 01:15:14', 0, 1),
-(14, 'Ahmed', 'Rayhan', 'ahmed_rayhan', 'ahmed_rayhan', '2020-11-06 01:15:14', 0, 1),
-(15, 'Rokibul Hasan', 'Rijon', 'rokibul_hasan_rijon', 'rokibul_hasan_rijon', '2020-11-06 01:15:14', 0, 1);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `created_at`, `have_image`, `is_active`, `is_type`) VALUES
+(1, 'Razinul', 'Karim', 'razinul_karim', 'razinul_karim', '2020-11-06 01:15:14', 0, 1606585436, 'on'),
+(2, 'Rashed Hasan', 'Siam', 'rashed_hasan_siam', 'rashed_hasan_siam', '2020-11-06 01:15:14', 0, 1606585490, 'on'),
+(3, 'Fadil', 'Ahnaf', 'fadil_ahnaf', 'fadil_ahnaf', '2020-11-06 01:15:14', 0, 1, 'off'),
+(4, 'Hasan', 'Shahrirar', 'hasan_shahriar', 'hasan_shahriar', '2020-11-06 01:15:14', 0, 1, 'off'),
+(5, 'Sourav', 'Malo', 'sourav_malo', 'sourav_malo', '2020-11-06 01:15:14', 0, 1, 'on'),
+(6, 'Jyotirmoy', 'Halder', 'jyotirmoy_halder', 'jyotirmoy_halder', '2020-11-06 01:15:14', 0, 1, 'off'),
+(7, 'Md Anis', 'Molla', 'md_anis_molla', 'md_anis_molla', '2020-11-06 01:15:14', 0, 1, 'off'),
+(8, 'Al Shahriar', 'Tonmoy', 'al_shahriar_tonmoy', 'al_shahriar_tonmoy', '2020-11-06 01:15:14', 0, 1, 'off'),
+(9, 'Md', 'Sayem', 'md_sayem', 'md_sayem', '2020-11-06 01:15:14', 0, 1, 'off'),
+(10, 'Sujan ', 'Mridha', 'sujan_mridha', 'sujan_mridha', '2020-11-06 01:15:14', 0, 1, 'off'),
+(11, 'Md', 'Rahat', 'md_rahat', 'md_rahat', '2020-11-06 01:15:14', 0, 1, 'off'),
+(12, 'Tarikul Islam', 'Sumom', 'tarikul_islam_sumon', 'tarikul_islam_sumon', '2020-11-06 01:15:14', 0, 1, 'off'),
+(13, 'Nayem', 'Zaman', 'nayem_zaman', 'nayem_zaman', '2020-11-06 01:15:14', 0, 1, 'off'),
+(14, 'Ahmed', 'Rayhan', 'ahmed_rayhan', 'ahmed_rayhan', '2020-11-06 01:15:14', 0, 1, 'off'),
+(15, 'Rokibul Hasan', 'Rijon', 'rokibul_hasan_rijon', 'rokibul_hasan_rijon', '2020-11-06 01:15:14', 0, 1, 'off');
 
 --
 -- Indexes for dumped tables
@@ -228,7 +242,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `users`
