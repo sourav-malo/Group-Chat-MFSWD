@@ -26,6 +26,7 @@ function setUserInfo(fullname, username) {
   profileImg.src = 'assets/img/users/' + username + '.jpg'
 }
 // Call imported function 
-groupRender();
+setInterval(groupRender,1000);
+// groupRender();
 
 

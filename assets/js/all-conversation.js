@@ -3,30 +3,33 @@
   export default async function groupRender(){
 
     // Rend all groups 
-    var groupdata= await fetch('api/read-Groups.php').then(response=>response.json());
+    var groupdata= await fetch('api/read-Groups.php').then(response=>response.json()).catch((err) => console.log(err));
   
     //Set all group data into an array
     var data=groupdata.data;
+    // console.log(data.id)
     const groupId=data.map(res=> res.id);
     const groupName=data.map(res=> res.name);
     const groupShort_name=data.map(res=> res.short_name);
-  
+
+
     //Rend group msg sender and exact time
     var msgarray=[];
     for(var i=0;i<groupId.length;i++){
       var messageResponse=await fetch('api/read-single-message-allgroup.php',{
         method:'POST',
         body:JSON.stringify({id:groupId[i]})
-      }).then(response=>response.json());
+      }).then(response=>response.json())
+      .catch((err) => console.log(err));
       
       var message=messageResponse.data;
       msgarray.push(message[0]);
     };
   
     //Set group msg and time into an array
-    var lastMsg=msgarray.map(res=> res.message);
-    var lastMsgSender=msgarray.map(res=> res.first_name);
-    var lastMsgSendAt=msgarray.map(res=> res.sent_at);
+    var lastMsg=msgarray.map(res => res.message);
+    var lastMsgSender=msgarray.map(res => res.first_name);
+    var lastMsgSendAt=msgarray.map(res => res.sent_at);
   
     //Set all group  data  in array object
      const allconversation=[];
@@ -79,7 +82,7 @@
      }
   
    //Select all groups
-    const groups=document.getElementById('groups');
+    var groups=document.getElementById('groups');
     var groupsShow='';
      
     //Create all group  by exact data
