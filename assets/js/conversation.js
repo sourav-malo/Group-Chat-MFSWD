@@ -28,8 +28,8 @@ function setUserInfo(fullname, username) {
 
 
 // Call imported function 
-// setInterval(groupRender,1000);
-groupRender();
+setInterval(groupRender,1000);
+// groupRender();
 
 // Add active class in first group 
 var groups=document.getElementById('groups');
