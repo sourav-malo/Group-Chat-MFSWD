@@ -82,19 +82,47 @@
      }
   
    //Select all groups
-    var groups=document.getElementById('groups');
-    var groupsShow='';
-     
-    //Create all group  by exact data
-    for(var i=0;i<allconversation.length;i++){
-    var time=getTime(allconversation[i].sendAt);
-    groupsShow +=' <div class="group" id="group" data-group-id='+allconversation[i].id+'> <div class="group_logo"><img width="100px" src="assets/img/groups/'+allconversation[i].group_shortname+'.png" /></div><div class="group_description"><div class="group_details"><h4 class="group_name">'+allconversation[i].group_name+'</h4><p class="last_msg"><span class="last_msg_person">'+allconversation[i].lastMsg_sender+': </span>'+allconversation[i].last_msg+'</p></div><div class="last_msg_time"><p class="time"><time>'+time+'</time></p></div></div></div>';
-     };
-  
-     //Set the group data
+    var allgroup=document.querySelectorAll('#group');
     
-       groups.innerHTML=groupsShow;
+    var groupsImg=document.querySelectorAll('.groups .group img');
+    var groupsName=document.querySelectorAll('.group_description .group_details .group_name');
   
+    var lastMsgs=document.querySelectorAll('.group_description .group_details .last_msg');
+    
+    var msgSender=document.querySelectorAll('.group_description .group_details .last_msg_person');
+   
+
+    var msgTime=document.querySelectorAll('.last_msg_time .time time');
+    
+  
+
+
+    for(var i=0;i<groupsImg.length;i++){
+
+      //  Set every group data set 
+      var dataSet=document.createAttribute('data-group-id'); 
+      allgroup[i].setAttributeNode(dataSet);
+      dataSet.value=allconversation[i].id;
+
+      //Set group img
+      var srcAtb=document.createAttribute('src');    groupsImg[i].setAttributeNode(srcAtb);
+          srcAtb.value="assets/img/groups/"+allconversation[i].group_shortname+".png";
+
+          // Set group name 
+          groupsName[i].innerHTML=allconversation[i].group_name;
+
+
+          // Set msg lastMsgSende
+        msgSender[i].innerHTML=allconversation[i].lastMsg_sender+" : "+allconversation[i].last_msg;
+
+          
+
+    }
+    setInterval(()=>{
+      for(var i=0;i<msgTime.length;i++){
+        msgTime[i].innerHTML=getTime(allconversation[i].sendAt);
+      }
+    },1000);
     
   };
   
