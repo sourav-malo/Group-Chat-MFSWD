@@ -1,3 +1,6 @@
+    //  create flag variable where user  inside the group render function user send msg option 
+    var flag=true;
+
 
  //Rend all using group 
   export default async function groupRender(){
@@ -96,7 +99,7 @@
        groups.innerHTML=groupsShow;
 
   
-  //  Select all groups
+     //  Select all groups
     var allgroup=document.querySelectorAll('.group');
    
     //  Set msg sender time 
@@ -124,6 +127,8 @@
       // var group_status=await fetch('api/read-group-status.php').then((response)=>response.json());
       var group_status_data=group_status.data;
      for(var i=0;i<group_status_data.length;i++){
+
+      // Check which group  is active 
        if(group_status_data[i].status==1){
 
          var active_group=group_status_data[i].group_id;
@@ -172,32 +177,39 @@
  
 
     //  User send messages 
-     var a=0;
-    var msgSend=document.querySelector('.sent_logo');
+     var msgSend=document.querySelector('.sent_logo');
+
+    if(flag){
+    
     msgSend.addEventListener('click',(e)=>{
       e.preventDefault();
      
-      console.log("hello");
-      // console.log(msgSend);
-      // var msgInput=document.getElementById('msgSend').value;
-      // console.log(msgInput);
-
-      // var headDataset=document.querySelector('.conversation_header').dataset.groupHeadId;
-      //  var msgInput=document.getElementById('msgSend').value;
-      //  if(msgInput!=""){
-      //     fetch('api/send-Messages.php',{
-      //   method:'POST',
-      //   body:JSON.stringify({'group_id':headDataset, 'message':msgInput})  
-      // }).then(response =>response.json())
-      // .catch((err)=>console.log(err));
-      //  }
-    });
+     
+      var msgInput=document.getElementById('msgSend').value;
+      var headDataset=document.querySelector('.conversation_header').dataset.groupHeadId;
+       var msgInput=document.getElementById('msgSend').value;
 
 
-   
-    
-  };
+      //  Check msgSend input 
+       if(msgInput!=""){
+
+        // fetch the msg send api 
+          fetch('api/send-Messages.php',{
+        method:'POST',
+        body:JSON.stringify({'group_id':headDataset, 'message':msgInput})  
+      }).then(response =>response.json())
+      .catch((err)=>console.log(err));
+       
+      // set msg send input is null
+      document.getElementById('msgSend').value="";
+
+          }
  
+         });
+           flag=false;
+      }
+  };
+
 
   
  
