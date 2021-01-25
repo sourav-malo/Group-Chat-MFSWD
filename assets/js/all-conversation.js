@@ -1,4 +1,93 @@
-    //  create flag variable where user  inside the group render function user send msg option 
+// Rend group Msg 
+
+async function rendMsg(data){
+  var allusername=[];
+  var msginfo=[];
+
+  // Rend  group all message 
+ var allmessage=await fetch('api/read-Group-Allmessage.php',{
+    method:'POST',
+    body:JSON.stringify({group_id:data})
+  }).then(response=>response.json())
+  .catch((err) => console.log(err));
+
+
+  // Rend current user 
+  var current_user=await fetch("api/get-user-info.php")
+  .then(response=> response.json());
+
+  // Rend all username 
+  for(var i=0;i<allmessage.data.length;i++){
+          var msgdata={
+             "user_id":allmessage.data[i].user_id,
+             "message":allmessage.data[i].message,
+             "sent_at":allmessage.data[i].sent_at
+           }
+            msginfo.push(msgdata);
+
+    var username=await fetch('api/get-single-user-info.php',{
+          method:'POST',
+          body:JSON.stringify({"id":allmessage.data[i].user_id})
+        }).then(response=>response.json());
+        data ={
+          "first_name":username.first_name,
+          "last_name":username.last_name,
+          "username":username.username
+        }
+    allusername.push(data);
+
+  };
+
+  // console.log(current_user.id);
+  console.log(allusername);
+  // console.log(msginfo);
+
+
+  var msgField=document.getElementById   ('conversation-desc');
+    var msg="";
+    // console.log(msginfo.length);
+    for(var i=0;i<msginfo.length;i++){
+      // console.log(msginfo[i].user_id);
+      if(msginfo[i].user_id==current_user.id){
+          if(i==msginfo.length-1){
+            msg+='<div class="outgoing-msg"><p class="message last-msg"><span class="message-body">'+msginfo[i].message+'</span> <span class="seen"> <img src="assets/img/logo/visible.png" alt="" /> </span></p> <span class="time_date"><span class="time_info">08:30 PM</span> - <span class="date_info">Jul 12, 2020</span></span><div class="sender_image"><img src="assets/img/users/'+allusername[i].username+'.jpg" /> </div> </div>';
+              
+          }
+          else if(msginfo[i].user_id == msginfo[i+1].user_id){
+            msg+='<div class="outgoing-msg"></div> <p class="message btw-msg"><span class="message-body">'+msginfo[i].message+'</span> <span class="seen"> <img src="assets/img/logo/visible.png" alt="" /></span></p><span class="time_date"><span class="time_info">08:30 PM</span>-<span class="date_info">Jul 12, 2020</span></span> </div>';
+
+          }
+          else{
+             msg+='<div class="outgoing-msg"> <p class="message last-msg"><span class="message-body">'+msginfo[i].message+'</span> <span class="seen"><img src="assets/img/logo/visible.png" alt="" /> </span> </p> <span class="time_date"> <span class="time_info">08:30 PM</span>-<span class="date_info">Jul 12, 2020</span></span> <div class="sender_image"> <img src="assets/img/users/'+allusername[i].username+'.jpg" /><div></div>';
+          }
+
+      }
+      else{
+  
+        if(i==msginfo.length-1){
+          msg+='<div class="incoming-msg"><p class="message last-msg"><span class="message-body" >'+msginfo[i].message+'</span > <span class="seen">  <img src="assets/img/logo/visible.png" alt=""/></span> </p> <span class="time_date"> <span class="time_info">08:30 PM</span>-<span class="date_info">Jul 12, 2020</span> </span> <div class="sender_image"><img src="assets/img/users/'+allusername[i].username+'.jpg" /> </div></div>';
+         
+          }
+        else if(msginfo[i].user_id == msginfo[i+1].user_id){
+          msg+='<div class="incoming-msg"><p class="message btw-msg"><span class="message-body">'+msginfo[i].message+'</span> <span class="seen"><img src="assets/img/logo/visible.png" alt="" /> </span> </p><span class="time_date"> <span class="time_info">08:30 PM</span>-<span class="date_info">Jul 12, 2020</span></span></div>';
+
+        }
+        else{
+          msg+=' <div class="incoming-msg"><p class="message last-msg"> <span class="message-body">'+msginfo[i].message+'</span > <span class="seen"> <img src="assets/img/logo/visible.png" alt="" /> </span> </p><span class="time_date"><span class="time_info">08:30 PM</span> - <span class="date_info">Jul 12, 2020</span> </span> <div class="sender_image"> <img src="assets/img/users/'+allusername[i].username+'.jpg" /> </div> <div>';
+
+        }
+        // msg+='<div class="incoming-msg"><p class="message"><span class="message-body">Is there any way to solve it?</span><span class="seen"> <img src="assets/img/logo/visible.png" alt="" /></span></p><span class="nick_name">Rayhan</span><span class="time_date"><span class="time_info">08:30 PM</span> <span class="date_info">Jul 12, 2020</span></span><div class="sender_image"><img src="assets/img/users/ahmed_rayhan.jpg" /></div></div>'
+      }
+  
+ }
+ msgField.innerHTML=msg;
+};
+
+rendMsg(5);
+
+   
+   
+   //  create flag variable where user  inside the group render function user send msg option 
     var flag=true;
 
 
@@ -124,7 +213,7 @@
 
 
     // Set group active status 
-      // var group_status=await fetch('api/read-group-status.php').then((response)=>response.json());
+    // This api rend above this code 
       var group_status_data=group_status.data;
      for(var i=0;i<group_status_data.length;i++){
 
@@ -154,6 +243,10 @@
 
                 //  Call group header  function 
                  groupHeader(src, groupname,dataid);
+                 
+
+                //  Call msg rend  function 
+                //  rendMsg(dataid);
               }
         }
        }
@@ -210,6 +303,6 @@
       }
   };
 
-
+ 
   
  
