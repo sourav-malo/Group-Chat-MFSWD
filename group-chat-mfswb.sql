@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2021 at 05:39 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Generation Time: Jan 26, 2021 at 04:37 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,8 +32,8 @@ CREATE TABLE `groups` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `short_name` varchar(30) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `have_image` tinyint(1) NOT NULL DEFAULT 0
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `have_image` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -56,7 +56,7 @@ INSERT INTO `groups` (`id`, `name`, `short_name`, `created_at`, `have_image`) VA
 CREATE TABLE `group_members` (
   `group_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `status` tinyint(1) DEFAULT 0
+  `status` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -73,7 +73,7 @@ INSERT INTO `group_members` (`group_id`, `user_id`, `status`) VALUES
 (5, 7, NULL),
 (5, 8, NULL),
 (5, 9, NULL),
-(5, 10, NULL),
+(5, 10, 0),
 (4, 1, 1),
 (4, 3, NULL),
 (4, 5, NULL),
@@ -88,7 +88,7 @@ INSERT INTO `group_members` (`group_id`, `user_id`, `status`) VALUES
 (3, 4, NULL),
 (3, 6, NULL),
 (3, 8, NULL),
-(3, 10, NULL),
+(3, 10, 0),
 (3, 12, 1),
 (3, 14, 0),
 (3, 1, 0),
@@ -103,14 +103,14 @@ INSERT INTO `group_members` (`group_id`, `user_id`, `status`) VALUES
 (2, 14, 0),
 (2, 15, NULL),
 (2, 12, 0),
-(2, 10, NULL),
+(2, 10, 1),
 (1, 1, 0),
 (1, 2, 0),
 (1, 4, NULL),
 (1, 5, NULL),
 (1, 7, NULL),
 (1, 8, NULL),
-(1, 10, NULL),
+(1, 10, 0),
 (1, 11, NULL),
 (1, 13, NULL),
 (1, 14, 0);
@@ -126,7 +126,7 @@ CREATE TABLE `messages` (
   `group_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `message` text NOT NULL,
-  `sent_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `sent_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -150,7 +150,13 @@ INSERT INTO `messages` (`id`, `group_id`, `user_id`, `message`, `sent_at`) VALUE
 (14, 5, 1, 'sourav i love javascript', '2021-01-15 14:51:35'),
 (15, 2, 12, 'i love php', '2021-01-15 15:06:55'),
 (16, 4, 12, 'swift is my favourite language', '2021-01-15 15:07:28'),
-(17, 3, 12, 'python . owo language', '2021-01-15 15:07:47');
+(17, 3, 12, 'python . owo language', '2021-01-15 15:07:47'),
+(18, 5, 1, 'and I learnt various API from Mozilla developer network (MDN)\r\nSourav suggested me the site.\r\nThank you Sourav.', '2021-01-26 03:19:58'),
+(19, 5, 1, 'and Thank You all.', '2021-01-26 03:21:07'),
+(20, 5, 10, 'You are right Razin. MDN is best for WEB', '2021-01-26 03:23:50'),
+(21, 5, 10, 'But it is very boring for beginner. ', '2021-01-26 03:24:59'),
+(22, 5, 10, 'Blogs are also very helpful.', '2021-01-26 03:25:44'),
+(23, 5, 10, 'What are you learning now?', '2021-01-26 03:26:12');
 
 -- --------------------------------------------------------
 
@@ -175,9 +181,9 @@ CREATE TABLE `users` (
   `last_name` varchar(20) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `have_image` tinyint(1) NOT NULL DEFAULT 0,
-  `is_active` bigint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `have_image` tinyint(1) NOT NULL DEFAULT '0',
+  `is_active` bigint(1) NOT NULL DEFAULT '1',
   `is_type` enum('on','off','','') NOT NULL DEFAULT 'off'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -254,7 +260,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
