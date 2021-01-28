@@ -1,5 +1,4 @@
-// Rend group Msg
-
+// Rend group Msg and the function start here
 async function rendMsg(data) {
   var allusername = []
   var msginfo = []
@@ -17,7 +16,7 @@ async function rendMsg(data) {
     response.json()
   )
 
-  // Rend all username
+  // Rend all username  who send the msg
   for (var i = 0; i < allmessage.data.length; i++) {
     var msgdata = {
       user_id: allmessage.data[i].user_id,
@@ -38,17 +37,16 @@ async function rendMsg(data) {
     allusername.push(data)
   }
 
-  // console.log(current_user.id);
-  // console.log(allusername)
-  // console.log(msginfo)
 
+  //write the all msg at the group in the conversation desc div 
   var msgField = document.getElementById('conversation-desc')
   var flag=msginfo.length;
   if(flag<msginfo.length){
       console.log(msginfo.length)
   }
 
-  // if()
+  
+
   for (var i = 0; i < msginfo.length; i++) {
     let last_msg = false
     let nick_name = true
@@ -100,25 +98,28 @@ async function rendMsg(data) {
     const parser = new DOMParser()
     const parsedDocument = parser.parseFromString(msg, 'text/html')
     msgField.appendChild(parsedDocument.getElementsByTagName('div')[0], true)
-    // console.log(msgField.childElementCount);
-
-   
   }
 
 
-
+// Always  Set scroll bottom 
   var conversationpage=document.getElementById('conversation-desc');
   conversationpage.scrollTop=conversationpage.scrollHeight-conversationpage.clientHeight;
 
 }
+// Msg rendering function End 
 
-// setInterval(()=>rendMsg(5),1000);
-// rendMsg(5)
 
-//  create flag variable where user  inside the group render function user send msg option
+
+
+
+//  create flag variable   inside the group render function user send msg 
 var flag = true;
+
+//check the user msg send or not send
 var check=0;
 
+
+//Rend  group function start
 //Rend all using group
 export default async function groupRender() {
   // Rend all groups
@@ -272,23 +273,15 @@ export default async function groupRender() {
           //  Call group header  function
           groupHeader(src, groupname, dataid)
 
-          //  Call msg rend  function
-          // console.log(rendMsg(dataid));
-          //  rendMsg(dataid);
 
+          // Check the user msg send or not send 
           var allmessage = await fetch('api/read-Group-Allmessage.php', {
             method: 'POST',
             body: JSON.stringify({ group_id:dataid }),
           })
             .then((response) => response.json())
             .catch((err) => console.log(err))
-          // console.log(allmessage.data.length);
-          
-
-      
           if(allmessage.data.length > check){
-            //  console.log(allmessage.data.length);
-            //  console.log(check)
              rendMsg(dataid);
              check=allmessage.data.length;
           }
@@ -300,9 +293,6 @@ export default async function groupRender() {
     }
   }
 
-  
-var headid=document.querySelector('.conversation_header');
-// console.log(headid);
   //  Update group status use click event
   for (var i = 0; i < allgroup.length; i++) {
     allgroup[i].addEventListener('click', (e) => {
@@ -316,7 +306,7 @@ var headid=document.querySelector('.conversation_header');
         // rendMsg(id);
 
         
-    //  Check value when  click a usable group 
+    //  Check value when  click a usable group and set value
     check=0;
     })
 
