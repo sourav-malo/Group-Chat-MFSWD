@@ -1,5 +1,5 @@
 import signOut from './sign-out.js'
-import  groupRender from './all-conversation.js'
+import groupRender from './all-conversation.js'
 
 const logOutbtn = document.getElementById('logOutbtn'),
   profileName = document.getElementById('Profile_name'),
@@ -22,25 +22,18 @@ function getUserInfo() {
 }
 
 function setUserInfo(fullname, username) {
-  profileName.innerText = fullname;
+  profileName.innerText = fullname
   profileImg.src = 'assets/img/users/' + username + '.jpg'
 }
 
-
 // Call imported function  group render in from all-conversation.js page
-setInterval(groupRender, 1000);
+setInterval(groupRender, 1000)
+// groupRender()
 
-// Update user active status 
-setInterval((e)=>{
- fetch('api/updateStatus.php')
- .then((response)=> response.json())
- .then((res)=>res.status)
- .catch((err)=>console.log(err));
-
-
-},1000);
-
-
-
-
-
+// Update user active status
+setInterval((e) => {
+  fetch('api/updateStatus.php')
+    .then((response) => response.json())
+    .then((res) => res.status)
+    .catch((err) => console.log(err))
+}, 1000)

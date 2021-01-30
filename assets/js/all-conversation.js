@@ -1,8 +1,12 @@
+let last_rendered_group = 0
+
 // Rend group Msg and the function start here
-async function rendMsg(data) {
+
+async function rendMsg(data, islastMsg) {
   var allusername = []
   var msginfo = []
 
+  last_rendered_group = data
   // Rend  group all message
   var allmessage = await fetch('api/read-Group-Allmessage.php', {
     method: 'POST',
@@ -37,34 +41,98 @@ async function rendMsg(data) {
     allusername.push(data)
   }
 
-
-  //write the all msg at the group in the conversation desc div 
+  //write the all msg at the group in the conversation desc div
   var msgField = document.getElementById('conversation-desc')
-  var flag=msginfo.length;
-  if(flag<msginfo.length){
-      // console.log(msginfo.length)
+  var flag = msginfo.length
+  if (flag < msginfo.length) {
+    // console.log(msginfo.length)
   }
 
-  for (var i = 0; i < msginfo.length; i++) {
+  if (!islastMsg) {
+    msgField.innerHTML = ''
+    for (var i = 0; i < msginfo.length; i++) {
+      // Rend user status
+      var activestatus = await fetch('api/is-Active.php', {
+        method: 'POST',
+        body: JSON.stringify({ id: msginfo[i].user_id }),
+      }).then((response) => response.json())
+      status = activestatus.status
+      // End rending user status
 
+      let last_msg = false
+      let nick_name = true
 
-    // Rend user status 
-    var activestatus=await fetch('api/is-Active.php',{
+      if (i > 0) {
+        let prevMsg = msgField.lastChild
+        let prevId = msgField.lastChild.getAttribute('msg-data-id')
+        let currentId = msginfo[i].user_id
+        if (prevId === currentId) {
+          if (prevMsg.querySelector('.message').className === 'message ') {
+            prevMsg.querySelector('.message').className = 'message first-msg'
+            last_msg = true
+            nick_name = false
+          } else if (
+            prevMsg.querySelector('.message').className === 'message last-msg'
+          ) {
+            prevMsg.querySelector('.message').className = 'message btw-msg'
+            last_msg = true
+            nick_name = false
+          }
+        }
+      }
+
+      let msg = `<div class="`
+      if (msginfo[i].user_id == current_user.id) {
+        nick_name = false
+        msg += 'outgoing-msg'
+      } else msg += 'incoming-msg'
+      msg += `" msg-data-id="${msginfo[i].user_id}">
+      <p class="message `
+      if (last_msg) {
+        msg += 'last-msg'
+      }
+      msg += `">
+        <span class="message-body">${msginfo[i].message}</span>
+        <span class="seen">
+          <img src="assets/img/logo/visible.png" alt="" />
+        </span>
+      </p>`
+      if (nick_name)
+        msg += `<span class="nick_name">${allusername[i].first_name}</span>`
+      msg += `<span class="time_date">
+        <span class="time_info">08:30 PM</span> -
+        <span class="date_info">Jul 12, 2020</span>
+      </span>`
+
+      if (status == 'Online') {
+        msg += `<div class="sender_image addactive">`
+      } else {
+        msg += `<div class="sender_image">`
+      }
+      msg += `<img src="assets/img/users/${allusername[i].username}.jpg" />
+      </div>`
+      msg += `</div>`
+
+      const parser = new DOMParser()
+      const parsedDocument = parser.parseFromString(msg, 'text/html')
+      msgField.appendChild(parsedDocument.getElementsByTagName('div')[0], true)
+    }
+  } else {
+    // Rend user status
+    var activestatus = await fetch('api/is-Active.php', {
       method: 'POST',
-      body: JSON.stringify({id:msginfo[i].user_id })
-    })
-    .then((response)=> response.json());
-    status=activestatus.status;
-    // End rending user status 
-
+      body: JSON.stringify({ id: msginfo[msginfo.length - 1].user_id }),
+    }).then((response) => response.json())
+    status = activestatus.status
+    // End rending user status
 
     let last_msg = false
     let nick_name = true
 
-    if (i > 0) {
+    if (msginfo.length - 1 > 0) {
       let prevMsg = msgField.lastChild
       let prevId = msgField.lastChild.getAttribute('msg-data-id')
-      let currentId = msginfo[i].user_id
+      let currentId = msginfo[msginfo.length - 1].user_id
       if (prevId === currentId) {
         if (prevMsg.querySelector('.message').className === 'message ') {
           prevMsg.querySelector('.message').className = 'message first-msg'
@@ -81,60 +149,58 @@ async function rendMsg(data) {
     }
 
     let msg = `<div class="`
-    if (msginfo[i].user_id == current_user.id) msg += 'outgoing-msg'
-    else msg += 'incoming-msg'
-    msg += `" msg-data-id="${msginfo[i].user_id}">
+    if (msginfo[msginfo.length - 1].user_id == current_user.id) {
+      nick_name = false
+      msg += 'outgoing-msg'
+    } else msg += 'incoming-msg'
+    msg += `" msg-data-id="${msginfo[msginfo.length - 1].user_id}">
       <p class="message `
     if (last_msg) {
       msg += 'last-msg'
     }
     msg += `">
-        <span class="message-body">${msginfo[i].message}</span>
+        <span class="message-body">${msginfo[msginfo.length - 1].message}</span>
         <span class="seen">
           <img src="assets/img/logo/visible.png" alt="" />
         </span>
       </p>`
     if (nick_name)
-      msg += `<span class="nick_name">${allusername[i].first_name}</span>`
+      msg += `<span class="nick_name">${
+        allusername[msginfo.length - 1].first_name
+      }</span>`
     msg += `<span class="time_date">
         <span class="time_info">08:30 PM</span> -
         <span class="date_info">Jul 12, 2020</span>
       </span>`
-                 
-       if(status=='Online'){
-          msg+=`<div class="sender_image addactive">`
-       }
-       else{
-         msg+=`<div class="sender_image">`
-       }
-       msg+= `<img src="assets/img/users/${allusername[i].username}.jpg" />
+
+    if (status == 'Online') {
+      msg += `<div class="sender_image addactive">`
+    } else {
+      msg += `<div class="sender_image">`
+    }
+    msg += `<img src="assets/img/users/${
+      allusername[msginfo.length - 1].username
+    }.jpg" />
       </div>`
     msg += `</div>`
-
 
     const parser = new DOMParser()
     const parsedDocument = parser.parseFromString(msg, 'text/html')
     msgField.appendChild(parsedDocument.getElementsByTagName('div')[0], true)
   }
 
-
-// Always  Set scroll bottom 
-  var conversationpage=document.getElementById('conversation-desc');
-  conversationpage.scrollTop=conversationpage.scrollHeight-conversationpage.clientHeight;
-
+  // Always  Set scroll bottom
+  var conversationpage = document.getElementById('conversation-desc')
+  conversationpage.scrollTop =
+    conversationpage.scrollHeight - conversationpage.clientHeight
 }
-// Msg rendering function End 
+// Msg rendering function End
 
-
-
-
-
-//  create flag variable   inside the group render function user send msg 
-var flag = true;
+//  create flag variable   inside the group render function user send msg
+var flag = true
 
 //check the user msg send or not send
-var check=0;
-
+var check = 0
 
 //Rend  group function start
 //Rend all using group
@@ -268,9 +334,8 @@ export default async function groupRender() {
   for (var i = 0; i < group_status_data.length; i++) {
     // Check which group  is active
     if (group_status_data[i].status == 1) {
-      var active_group = group_status_data[i].group_id;
+      var active_group = group_status_data[i].group_id
       // console.log(active_group);
-
 
       for (var j = 0; j < allgroup.length; j++) {
         var group_data = allgroup[j].dataset.groupId
@@ -290,21 +355,24 @@ export default async function groupRender() {
           //  Call group header  function
           groupHeader(src, groupname, dataid)
 
-
-          // Check the user msg send or not send 
+          // Check the user msg send or not send
           var allmessage = await fetch('api/read-Group-Allmessage.php', {
             method: 'POST',
-            body: JSON.stringify({ group_id:dataid }),
+            body: JSON.stringify({ group_id: dataid }),
           })
             .then((response) => response.json())
             .catch((err) => console.log(err))
-          if(allmessage.data.length > check){
-             rendMsg(dataid);
-             check=allmessage.data.length;
+
+          if (
+            allmessage.data.length > check &&
+            dataid === last_rendered_group
+          ) {
+            rendMsg(dataid, true)
+            check = allmessage.data.length
+          } else if (allmessage.data.length > check) {
+            rendMsg(dataid, false)
+            check = allmessage.data.length
           }
-         
-
-
         }
       }
     }
@@ -319,15 +387,11 @@ export default async function groupRender() {
         body: JSON.stringify({ group_id: id }),
       })
         .then((response) => response.json())
-        .catch((err) => console.log(err));
-        // rendMsg(id);
+        .catch((err) => console.log(err))
 
-        
-    //  Check value when  click a usable group and set value
-    check=0;
+      //  Check value when  click a usable group and set value
+      check = 0
     })
-
-
   }
 
   //  User send messages
@@ -359,3 +423,21 @@ export default async function groupRender() {
     flag = false
   }
 }
+
+let msgSendInput = document.getElementById('msgSend')
+msgSendInput.addEventListener('input', (e) => {
+  fetch('api/update-is-type.php', {
+    method: 'POST',
+    body: JSON.stringify({ is_type: true }),
+  })
+    .then((response) => {})
+    .catch((err) => console.log(err))
+})
+msgSendInput.addEventListener('blur', (e) => {
+  fetch('api/update-is-type.php', {
+    method: 'POST',
+    body: JSON.stringify({ is_type: false }),
+  })
+    .then((response) => {})
+    .catch((err) => console.log(err))
+})

@@ -10,10 +10,11 @@ $db=$database->connect();
 $users=new Users($db);
 session_start(); 
 $users->id=$_SESSION['user']['id'];
- 
+
+
+
 // Create Instatiate is_type 
 $stmt=$users->is_Type();
-  
 
 $row=$stmt->rowCount();
 if($row>0){
