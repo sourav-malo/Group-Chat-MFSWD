@@ -42,12 +42,22 @@ async function rendMsg(data) {
   var msgField = document.getElementById('conversation-desc')
   var flag=msginfo.length;
   if(flag<msginfo.length){
-      console.log(msginfo.length)
+      // console.log(msginfo.length)
   }
 
-  
-
   for (var i = 0; i < msginfo.length; i++) {
+
+
+    // Rend user status 
+    var activestatus=await fetch('api/is-Active.php',{
+      method: 'POST',
+      body: JSON.stringify({id:msginfo[i].user_id })
+    })
+    .then((response)=> response.json());
+    status=activestatus.status;
+    // End rending user status 
+
+
     let last_msg = false
     let nick_name = true
 
@@ -77,7 +87,6 @@ async function rendMsg(data) {
       <p class="message `
     if (last_msg) {
       msg += 'last-msg'
-      // console.log('last message')
     }
     msg += `">
         <span class="message-body">${msginfo[i].message}</span>
@@ -90,11 +99,19 @@ async function rendMsg(data) {
     msg += `<span class="time_date">
         <span class="time_info">08:30 PM</span> -
         <span class="date_info">Jul 12, 2020</span>
-      </span>
-      <div class="sender_image">
-        <img src="assets/img/users/${allusername[i].username}.jpg" />
+      </span>`
+                 
+       if(status=='Online'){
+          msg+=`<div class="sender_image addactive">`
+       }
+       else{
+         msg+=`<div class="sender_image">`
+       }
+       msg+= `<img src="assets/img/users/${allusername[i].username}.jpg" />
       </div>`
     msg += `</div>`
+
+
     const parser = new DOMParser()
     const parsedDocument = parser.parseFromString(msg, 'text/html')
     msgField.appendChild(parsedDocument.getElementsByTagName('div')[0], true)

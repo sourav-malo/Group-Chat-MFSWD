@@ -618,14 +618,25 @@ span.time_date {
   left: 1rem;
 }
 
-.sender_image::after {
+/* .sender_image::after { */
+  /* content: '';
+  position: absolute;
+  height: 1.3rem;
+  width: 1.3rem;
+  right: 0.1rem;
+  bottom: 0.3rem;
+  background-color: #51ff00;
+  border-radius: 50%;
+  border: 0.2rem solid #fff;
+} */
+.addactive::after {
   content: '';
   position: absolute;
   height: 1.3rem;
   width: 1.3rem;
   right: 0.1rem;
   bottom: 0.3rem;
-  background-color: #9800ff;
+  background-color: #51ff00;
   border-radius: 50%;
   border: 0.2rem solid #fff;
 }

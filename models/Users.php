@@ -56,10 +56,9 @@
 
     // Check user is Active or Deactive
     public function activeStatus(){
-       session_start();
-       $UID=$_SESSION['user']['id'];
-      $query="SELECT * FROM users WHERE id='$UID';";
+      $query="SELECT * FROM users WHERE id=:id;";
       $stmt=$this->conn->prepare($query);
+      $stmt->bindParam(':id', $this->id);
       $stmt->execute();
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
        $last_sign_in= $row['is_active'];

@@ -30,6 +30,16 @@ function setUserInfo(fullname, username) {
 // Call imported function  group render in from all-conversation.js page
 setInterval(groupRender, 1000);
 
+// Update user active status 
+setInterval((e)=>{
+ fetch('api/updateStatus.php')
+ .then((response)=> response.json())
+ .then((res)=>res.status)
+ .catch((err)=>console.log(err));
+
+
+},1000);
+
 
 
 
