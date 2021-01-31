@@ -24,11 +24,11 @@ session_start();
             array('status'=>'Update sucessfully')
         );
     }
-    else{
-        echo json_encode(
-            array('status'=>'Update failed')
-        );
-    }
+    // else{
+    //     echo json_encode(
+    //         array('status'=>'Update failed')
+    //     );
+    // }
 
 
 ?>

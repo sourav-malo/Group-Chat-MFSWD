@@ -106,20 +106,7 @@
        }
    }
 
-   //Check Is type   Status
-   public function is_Type(){
-       $query="SELECT * FROM ".$this->table." WHERE id=:id;";
 
-       //Prepare statement
-       $stmt=$this->conn->prepare($query);
-       $this->id=htmlspecialchars(strip_tags($this->id));
-      
-       ///Bind param
-      $stmt->bindParam(':id',$this->id);
-
-       $stmt->execute();
-       return $stmt;
-   }
 
 
   //  Get single user info 
