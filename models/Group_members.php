@@ -48,7 +48,7 @@
 
             //Check Is type   Status
    public function is_Type(){
-    $query="SELECT users.is_type FROM users JOIN group_members on users.id=group_members.user_id WHERE group_members.group_id=:id";
+    $query="SELECT users.id, users.is_type FROM users JOIN group_members on users.id=group_members.user_id WHERE group_members.group_id=:id";
 
     //Prepare statement
     $stmt=$this->conn->prepare($query);

@@ -1,4 +1,4 @@
-let last_rendered_group = 0
+export let last_rendered_group = 0
 
 // Rend group Msg and the function start here
 
@@ -225,11 +225,12 @@ export default async function groupRender() {
   // Rend group msg sender and exact time
   var msgarray = []
   for (var i = 0; i < groupId.length; i++) {
-    var messageResponse = await fetch('api/read-single-message-allgroup.php', {
+    let messageResponse = await fetch('api/read-single-message-allgroup.php', {
       method: 'POST',
       body: JSON.stringify({ id: groupId[i] }),
     })
       .then((response) => response.json())
+      .then((data) => data)
       .catch((err) => console.log(err))
 
     var message = messageResponse.data
@@ -356,7 +357,7 @@ export default async function groupRender() {
           groupHeader(src, groupname, dataid)
 
           // Check the user msg send or not send
-          var allmessage = await fetch('api/read-Group-Allmessage.php', {
+          let allmessage = await fetch('api/read-Group-Allmessage.php', {
             method: 'POST',
             body: JSON.stringify({ group_id: dataid }),
           })
@@ -441,3 +442,40 @@ msgSendInput.addEventListener('blur', (e) => {
     .then((response) => {})
     .catch((err) => console.log(err))
 })
+
+async function getCurrentUserId() {
+  let current_user = await fetch('api/get-user-info.php')
+    .then((response) => response.json())
+    .then((data) => data)
+  // console.log(current_user.id)
+  return current_user.id
+}
+
+export function getTypingStatus(groupId) {
+  if (groupId !== 0) {
+    fetch('api/is-type.php', {
+      method: 'POST',
+      body: JSON.stringify({ id: groupId }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setIsTypingMsg(data)
+      })
+      .catch((err) => console.log(err))
+  }
+}
+
+async function setIsTypingMsg(statuses) {
+  const typingStatusElement = document.getElementById('typing_check')
+  const currentUserId = await getCurrentUserId()
+  let status = false
+  for (let i = 0; i < statuses.length; ++i) {
+    if (currentUserId !== statuses[i].id) {
+      if (statuses[i].is_type === 'on') {
+        status = true
+      }
+    }
+  }
+  if (status) typingStatusElement.innerHTML = 'An user is typing.....'
+  else typingStatusElement.innerHTML = ''
+}

@@ -10,32 +10,17 @@ $db=$database->connect();
 $group_members=new Group_members($db);
 
  // Get raw posted data
- $data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"));
 
-  if(isset($data->id)) {
-       // Set Properties
-       $group_members->group_id=$data->id;
-
-       // Create Instatiate is_type 
-       $stmt=$group_members->is_Type();
-       
-       $row=$stmt->rowCount();
-       if($row>0){
-           $is_type=false;
-           while($result=$stmt->fetch(PDO::FETCH_ASSOC)){
-               $status= $result['is_type'];
-               if($status=='on'){
-                   $is_type=true;
-               }
-           }
-           if($is_type==true){
-            echo json_encode(array('status'=>'Typing'));
-           }
-           else{
-            echo json_encode(array('status'=>'notTyping'));
-           }
-       }
-    } 
+if(isset($data->id)) {
+    $group_members->group_id = $data->id;
+    $stmt = $group_members->is_Type();
+    $typing_statuses = array();
+    while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+        array_push($typing_statuses, $result);
+    }
+    echo json_encode($typing_statuses);
+} 
 
 
 ?>

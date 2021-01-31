@@ -1,5 +1,8 @@
 import signOut from './sign-out.js'
-import groupRender from './all-conversation.js'
+import groupRender, {
+  getTypingStatus,
+  last_rendered_group as groupId,
+} from './all-conversation.js'
 
 const logOutbtn = document.getElementById('logOutbtn'),
   profileName = document.getElementById('Profile_name'),
@@ -27,8 +30,10 @@ function setUserInfo(fullname, username) {
 }
 
 // Call imported function  group render in from all-conversation.js page
-setInterval(groupRender, 1000)
-// groupRender()
+setInterval(() => {
+  groupRender()
+  getTypingStatus(groupId)
+}, 1000)
 
 // Update user active status
 setInterval((e) => {
